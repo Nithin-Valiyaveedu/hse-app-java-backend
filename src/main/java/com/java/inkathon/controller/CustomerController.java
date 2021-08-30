@@ -1,7 +1,7 @@
 package com.java.inkathon.controller;
+
 import java.util.List;
 
-import com.java.inkathon.dao.CustomerDao;
 import com.java.inkathon.model.Customer;
 
 import com.java.inkathon.service.CustomerService;
@@ -22,11 +22,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class CustomerController {
 	
 	@Autowired
-	private CustomerDao dao;
+	private CustomerService customerService;
 	@RequestMapping(value="/savePerson", method= RequestMethod.POST)
 	@ResponseBody 
 	public String save(@RequestBody Customer customer){
-		return dao.savePerson(customer);
+		return customerService.savePerson(customer);
 	}
 	
 	

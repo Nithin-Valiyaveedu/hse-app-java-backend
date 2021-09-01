@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 
 @Entity
 @Table(name="Action Team")
-public class ActionTeamDao {
+public class ActionTeamDo {
 	
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
@@ -24,11 +24,11 @@ public class ActionTeamDao {
 	
 	
 	
-	public ActionTeamDao() {
+	public ActionTeamDo() {
 		super();
 	}
 	
-	public ActionTeamDao(String status) {
+	public ActionTeamDo(String status) {
 		super();
 		this.status = status;
 		
@@ -46,7 +46,7 @@ public class ActionTeamDao {
 
 	@Override
 	public String toString() {
-		return "Action_Team [id=" + id + ", status=" + status +" ]";
+		return "ActionTeam [id=" + id + ", status=" + status +" ]";
 	}
 	
 	

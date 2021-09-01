@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 
 @Entity
 @Table(name="Field Manager")
-public class FieldManagerDao {
+public class FieldManagerDo {
 	// 
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
@@ -47,14 +47,14 @@ public class FieldManagerDao {
 		this.phoneNumber = phoneNumber;
 	}
 
-	public FieldManagerDao() {
+	public FieldManagerDo() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public String toString() {
-		return "FieldManagerDao [manager_id=" + manager_id + ", name=" + name + ", phoneNumber=" + phoneNumber + "]";
+		return "FieldManager [manager_id=" + manager_id + ", name=" + name + ", phoneNumber=" + phoneNumber + "]";
 	}
 	
 	

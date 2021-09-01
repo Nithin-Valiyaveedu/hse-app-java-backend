@@ -29,8 +29,8 @@ public class IncidentDao {
 		try{
 			Session session = factory.getCurrentSession();
 			List<IncidentDo> incidents = new ArrayList<IncidentDo>();
-//			incidents = session.createQuery("from Incident", IncidentDo.class).list();
-			incidents.add(session.get(IncidentDo.class, 99));
+			incidents = session.createQuery("from incident", IncidentDo.class).list();
+			//incidents.add(session.get(IncidentDo.class, 99));
 			return incidents;
 		}catch(Exception e)
 		{

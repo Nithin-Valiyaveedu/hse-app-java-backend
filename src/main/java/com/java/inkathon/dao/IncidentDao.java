@@ -27,14 +27,14 @@ public class IncidentDao {
 	
 	public List<IncidentDo> getAllincidents() {
 		try{
-			
 			Session session = factory.getCurrentSession();
 			List<IncidentDo> incidents = new ArrayList<IncidentDo>();
-			incidents = session.createQuery("from Student", IncidentDo.class).list();
+//			incidents = session.createQuery("from Incident", IncidentDo.class).list();
+			incidents.add(session.get(IncidentDo.class, 99));
 			return incidents;
 		}catch(Exception e)
 		{
-			System.out.println("Execep:---"+ e);
+			System.err.println("Execep:---"+ e);
 		}
 		
 		return null;

@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 @Entity
 @Table(name="Field Manager")
 public class FieldManagerDao {
-	
+	// 
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private Long manager_id;

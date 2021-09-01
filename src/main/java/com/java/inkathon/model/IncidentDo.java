@@ -14,7 +14,6 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 @Entity
 @Table(name="Incident")
 public class IncidentDo{
- // access specifier public
     @Id
     @Column(name="INCIDENT_ID")
     int id;

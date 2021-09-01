@@ -20,8 +20,7 @@ public class IncidentServiceImpl implements IncidentService {
 
 	@Override
 	public List<IncidentDo> getallincident() {
-		// TODO Auto-generated method stub
-		return null;
+		return incidentDao.getAllincidents();
 	}
 
 

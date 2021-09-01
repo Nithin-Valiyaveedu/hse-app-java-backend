@@ -1,4 +1,4 @@
- package com.java.inkathon.dao;
+package com.java.inkathon.dao;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.java.inkathon.model.Incident;
+import com.java.inkathon.model.IncidentDo;
 
 @Repository
 @Transactional
@@ -17,7 +17,7 @@ public class IncidentDao {
 	@Autowired(required=true)
 	private SessionFactory factory;
 	
-	public String savePerson(Incident incident){
+	public String saveIncident(IncidentDo incident){
 		if(incident!=null){
 			factory.getCurrentSession().save(incident);
 			return "success inserted into DB";
@@ -25,12 +25,12 @@ public class IncidentDao {
 		return "object not found";
 	}
 	
-	public List<Incident> getAllincidents() {
+	public List<IncidentDo> getAllincidents() {
 		try{
 			
 			Session session = factory.getCurrentSession();
-			List<Incident> incidents = new ArrayList<Incident>();
-			incidents = session.createQuery("from Student", Incident.class).list();
+			List<IncidentDo> incidents = new ArrayList<IncidentDo>();
+			incidents = session.createQuery("from Student", IncidentDo.class).list();
 			return incidents;
 		}catch(Exception e)
 		{

@@ -1,5 +1,5 @@
 package com.java.inkathon.controller;
-import com.java.inkathon.model.Incident;
+import com.java.inkathon.model.IncidentDo;
 import com.java.inkathon.service.IncidentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,7 +16,7 @@ public class IncidentController {
 	private IncidentService incidentService;
 	@RequestMapping(value="/saveIncident", method= RequestMethod.POST)
 	@ResponseBody 
-	public String save(@RequestBody Incident incident){
+	public String save(@RequestBody IncidentDo incident){
 		return incidentService.saveIncident(incident);
 	}
 	

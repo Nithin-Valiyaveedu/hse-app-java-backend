@@ -8,14 +8,12 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 @Table(name="Incident")
-public class Incident{
+public class IncidentDo{
  // access specifier public
     @Id
     @Column(name="INCIDENT_ID")
@@ -49,7 +47,7 @@ public class Incident{
     @Column(name="RISK_LEVEL")
     int riskLevel;
     
-    public Incident() {
+    public IncidentDo() {
 		super();
 		// TODO Auto-generated constructor stub
 	}

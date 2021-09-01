@@ -8,7 +8,10 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
- 
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 @Table(name="Incident")
@@ -39,6 +42,7 @@ public class Incident{
     @Column(name="INCIDENT_TYPE")
     String incidentType;
     
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @Column(name="INCIDENT_DATE")
     Date incidentDate;
     
@@ -130,6 +134,13 @@ public class Incident{
 		this.riskLevel = riskLevel;
 	}
 
+	@Override
+	public String toString() {
+		return "Incident [id=" + id + ", managerID=" + managerID + ", action=" + action + ", status=" + status
+				+ ", photo=" + photo + ", location=" + location + ", description=" + description + ", incidentType="
+				+ incidentType + ", incidentDate=" + incidentDate + ", riskLevel=" + riskLevel + "]";
+	}
+	
            
 }
     

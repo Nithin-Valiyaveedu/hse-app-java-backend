@@ -19,7 +19,7 @@ public class IncidentDo{
     int id;
  
     @Column(name="MANAGER_ID")
-    String managerID; 
+    int managerID; 
  
     @Column(name="ACTION_NEEDED")
     String action;
@@ -57,14 +57,6 @@ public class IncidentDo{
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public String getManagerName() {
-		return managerID;
-	}
-
-	public void setManagerName(String managerName) {
-		this.managerID = managerName;
 	}
 
 	public String getAction() {

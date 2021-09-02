@@ -10,7 +10,7 @@ public interface IncidentService {
 	
 	public String saveIncident(IncidentDo incident) ;
 	
-	public List<IncidentDo> getallincident();
+	public List<IncidentDo> listIncidents();
 
 }
 

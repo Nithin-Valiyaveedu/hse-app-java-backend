@@ -15,6 +15,7 @@ public class FieldManagerDo {
 	// 
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
+	@Column(name="MANAGER_ID")
 	private Long manager_id;
 	
 	@Column(name="name")

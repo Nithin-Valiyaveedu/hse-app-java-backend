@@ -19,7 +19,7 @@ public class IncidentServiceImpl implements IncidentService {
 	}
 
 	@Override
-	public List<IncidentDo> getallincident() {
+	public List<IncidentDo> listIncidents() {
 		return incidentDao.getAllincidents();
 	}
 

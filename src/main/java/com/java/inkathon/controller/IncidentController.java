@@ -32,7 +32,7 @@ public class IncidentController {
 	@ResponseBody
 	public ResponseDto methodTest() {
 
-		List<IncidentDo> rsE = incidentService.getallincident();
+		List<IncidentDo> rsE = incidentService.listIncidents();
 		System.out.println("data " + rsE);
 		rdto.setData(rsE);
 		return rdto;

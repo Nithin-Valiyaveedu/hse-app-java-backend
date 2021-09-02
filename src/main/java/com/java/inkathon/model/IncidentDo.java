@@ -1,6 +1,4 @@
 package com.java.inkathon.model;
-
-
 import java.sql.Blob;
 import java.util.Date;
 
@@ -33,14 +31,30 @@ public class IncidentDo{
     @Column(name="LOCATION")
     private String location;
     
-    @Column(name="Sector")
-    private String sector;
-    
     @Column(name="DESCRIPTION")
     private String description;
     
-    @Column(name="INCIDENT_TYPE")
+    public String getInjury() {
+		return injury;
+	}
+
+	public void setInjury(String injury) {
+		this.injury = injury;
+	}
+
+	public String getSector() {
+		return sector;
+	}
+
+	public void setSector(String sector) {
+		this.sector = sector;
+	}
+
+	@Column(name="INCIDENT_TYPE")
     private String incidentType;
+    
+    @Column(name="INJURY")
+    private String injury;
     
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @Column(name="INCIDENT_DATE")
@@ -49,11 +63,12 @@ public class IncidentDo{
     @Column(name="RISK_LEVEL")
     private int riskLevel;
     
-    @Column(name="Injury")
-    private String injury;
     
     @Column(name="ACTION_NEEDED")
     private String action;
+    
+    @Column(name="SECTOR")
+    private String sector;
     
     
     public IncidentDo() {

@@ -34,22 +34,7 @@ public class IncidentDao {
 		System.err.println("NEW ERROR:---"+ e);
 		}
 		return null;
-}
-	
-//	public List<IncidentDo> getAllincidents() {
-//		try{
-//			Session session = factory.getCurrentSession();
-//			List<IncidentDo> incidents = new ArrayList<IncidentDo>();
-//			incidents.add(session.get(IncidentDo.class, 3));
-//			return incidents;
-//		}catch(Exception e)
-//		{
-//			System.err.println("Execep:---"+ e);
-//		}
-//		
-//		return null;
-//	}
+	}
+	  
 
-  
- 
 }

@@ -11,7 +11,7 @@ import javax.persistence.Table;
 import org.springframework.stereotype.Component;
 
 @Entity
-@Table(name="Action Team")
+@Table(name="ActionTeam")
 public class ActionTeamDo {
 	
 	@Id
@@ -20,9 +20,6 @@ public class ActionTeamDo {
 	
 	@Column(name="status")
 	private String status;
-	
-	
-	
 	
 	public ActionTeamDo() {
 		super();

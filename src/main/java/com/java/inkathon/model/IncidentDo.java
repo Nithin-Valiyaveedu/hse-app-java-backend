@@ -6,6 +6,8 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -15,36 +17,44 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 @Table(name="Incident")
 public class IncidentDo{
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="INCIDENT_ID")
-    int id;
+    private int id;
  
     @Column(name="MANAGER_ID")
-    int managerID; 
- 
-    @Column(name="ACTION_NEEDED")
-    String action;
+    private int managerID; 
     
     @Column(name="STATUS")
-    String status;
+    private String status;
     
     @Column(name="PHOTO")
-    Blob photo;
+    private Blob photo;
     
     @Column(name="LOCATION")
-    String location;
+    private String location;
+    
+    @Column(name="Sector")
+    private String sector;
     
     @Column(name="DESCRIPTION")
-    String description;
+    private String description;
     
     @Column(name="INCIDENT_TYPE")
-    String incidentType;
+    private String incidentType;
     
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @Column(name="INCIDENT_DATE")
-    Date incidentDate;
+    private Date incidentDate;
     
     @Column(name="RISK_LEVEL")
-    int riskLevel;
+    private int riskLevel;
+    
+    @Column(name="Injury")
+    private String injury;
+    
+    @Column(name="ACTION_NEEDED")
+    private String action;
+    
     
     public IncidentDo() {
 		super();

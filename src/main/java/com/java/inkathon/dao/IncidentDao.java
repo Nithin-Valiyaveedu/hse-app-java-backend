@@ -2,6 +2,8 @@ package com.java.inkathon.dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.criteria.From;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,8 +31,7 @@ public class IncidentDao {
 		try{
 			Session session = factory.getCurrentSession();
 			List<IncidentDo> incidents = new ArrayList<IncidentDo>();
-			incidents = session.createQuery("from incident", IncidentDo.class).list();
-			//incidents.add(session.get(IncidentDo.class, 99));
+			incidents.add(session.get(IncidentDo.class, 2));
 			return incidents;
 		}catch(Exception e)
 		{

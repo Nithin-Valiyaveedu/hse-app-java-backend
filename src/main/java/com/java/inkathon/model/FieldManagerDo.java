@@ -10,7 +10,7 @@ import javax.persistence.Table;
 import org.springframework.stereotype.Component;
 
 @Entity
-@Table(name="Field Manager")
+@Table(name="FieldManager")
 public class FieldManagerDo {
 	// 
 	@Id

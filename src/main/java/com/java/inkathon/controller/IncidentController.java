@@ -38,4 +38,14 @@ public class IncidentController {
 		return rdto;
 	}
 	
+	@GetMapping("/manager")
+	@ResponseBody
+	public ResponseDto methodTest1() {
+
+		List<IncidentDo> rsE = incidentService.listIncidents();
+		System.out.println("data " + rsE);
+		rdto.setData(rsE);
+		return rdto;
+	}
+	
 }

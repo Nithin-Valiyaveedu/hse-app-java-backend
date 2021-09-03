@@ -1,14 +1,13 @@
 package com.java.inkathon.model;
 import java.sql.Blob;
 import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
@@ -18,11 +17,11 @@ public class IncidentDo{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="INCIDENT_ID")
     private int id;
- 
+
     @Column(name="MANAGER_ID")
     private int managerID; 
     
-    @Column(name="STATUS")
+	@Column(name="STATUS")
     private String status;
     
     @Column(name="PHOTO")
@@ -33,22 +32,6 @@ public class IncidentDo{
     
     @Column(name="DESCRIPTION")
     private String description;
-    
-    public String getInjury() {
-		return injury;
-	}
-
-	public void setInjury(String injury) {
-		this.injury = injury;
-	}
-
-	public String getSector() {
-		return sector;
-	}
-
-	public void setSector(String sector) {
-		this.sector = sector;
-	}
 
 	@Column(name="INCIDENT_TYPE")
     private String incidentType;
@@ -72,8 +55,16 @@ public class IncidentDo{
     
     
     public IncidentDo() {
-		super();
-		// TODO Auto-generated constructor stub
+    	this.managerID=(int)(Math.random()*(1000-100+1)+100);
+	}
+    
+    public int getManagerID() {
+		return managerID;
+	}
+    
+	public void setManagerID(int managerID) {
+		 
+		this.managerID = managerID; 
 	}
 
 	public int getId() {
@@ -132,13 +123,14 @@ public class IncidentDo{
 		this.incidentType = incidentType;
 	}
 
-//	public Date getIncidentDate() {
-//		return incidentDate;
-//	}
+	public Date getIncidentDate() {
+		return incidentDate;
+	}
 
-//	public void setIncidentDate(Date incidentDate) {
-//		this.incidentDate = incidentDate;
-//	}
+    public void setIncidentDate(Date incidentDate) {
+    	this.incidentDate = incidentDate;
+	
+    }
 
 	public int getRiskLevel() {
 		return riskLevel;
@@ -147,6 +139,22 @@ public class IncidentDo{
 	public void setRiskLevel(int riskLevel) {
 		this.riskLevel = riskLevel;
 	}
+	
+	 public String getInjury() {
+		return injury;
+	}
+
+	public void setInjury(String injury) {
+		this.injury = injury;
+	}
+
+	public String getSector() {
+		return sector;
+	}
+
+	public void setSector(String sector) {
+		this.sector = sector;
+	}	
 
 	@Override
 	public String toString() {

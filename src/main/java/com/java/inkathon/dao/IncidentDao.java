@@ -31,7 +31,7 @@ public class IncidentDao {
 		return incidentList;
 		}
 		catch(Exception e){
-		System.err.println("NEW ERROR:---"+ e);
+		System.err.println("ERROR:---"+ e);
 		}
 		return null;
 	}

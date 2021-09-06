@@ -38,14 +38,10 @@ public class IncidentController {
 		return rdto;
 	}
 	
-	@GetMapping("/manager")
+	@RequestMapping(value="/updatedRisk", method= RequestMethod.POST)
 	@ResponseBody
-	public ResponseDto methodTest1() {
-
-		List<IncidentDo> rsE = incidentService.listIncidents();
-		System.out.println("data " + rsE);
-		rdto.setData(rsE);
-		return rdto;
+	public String updaterisk(@RequestBody IncidentDo incident){
+		return incidentService.updateRisk(incident);
 	}
 	
 }

@@ -1,6 +1,11 @@
 package com.java.inkathon.dao;
 import java.util.List;
+
+import javax.persistence.Query;
+
 import com.java.inkathon.model.IncidentDo;
+import com.sap.db.jdbc.Transaction;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +40,21 @@ public class IncidentDao {
 		}
 		return null;
 	}
+	
+	public String updateRisk(IncidentDo incident){
+		if(incident!=null){
+			Session session = this.factory.getCurrentSession();
+			Query query = session.createQuery("update IncidentDo set RISK_LEVEL=:RISK_LEVEL where INCIDENT_ID=:INCIDENT_ID");
+	        query.setParameter("RISK_LEVEL",incident.getRiskLevel());
+	        query.setParameter("INCIDENT_ID",incident.getId());
+	        int result = query.executeUpdate();
+	        // Commit the transaction and close the session
+	        System.err.println("No of rows updated: "+result);
+			return "Succesfully updated";
+		}
+		return "object not found";
+	}
+	
 	  
 
 }

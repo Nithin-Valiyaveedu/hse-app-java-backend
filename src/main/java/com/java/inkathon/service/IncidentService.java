@@ -11,6 +11,8 @@ public interface IncidentService {
 	public String saveIncident(IncidentDo incident) ;
 	
 	public List<IncidentDo> listIncidents();
+	
+	public String updateRisk(IncidentDo incident);
 
 }
 

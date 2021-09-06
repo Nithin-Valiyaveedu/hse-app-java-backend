@@ -22,7 +22,11 @@ public class IncidentServiceImpl implements IncidentService {
 	public List<IncidentDo> listIncidents() {
 		return incidentDao.getAllincidents();
 	}
-
+	
+	
+	public String updateRisk(IncidentDo incident){
+		return incidentDao.updateRisk(incident);
+	}
 
 
 	

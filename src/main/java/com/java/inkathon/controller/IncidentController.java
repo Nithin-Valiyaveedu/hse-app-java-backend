@@ -28,7 +28,7 @@ public class IncidentController {
 		return incidentService.saveIncident(incident);
 	}
 	
-	@GetMapping("/test")
+	@GetMapping("/test2")
 	@ResponseBody
 	public ResponseDto methodTest() {
 

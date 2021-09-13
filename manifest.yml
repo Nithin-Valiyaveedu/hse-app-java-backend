@@ -3,7 +3,7 @@ applications:
 - name: InkathonApp
 #memory: 1G
 path: target/InkathonApp.war
-random-route: true
+random-route: false
 buildpack: https://github.com/cloudfoundry/java-buildpack.git
 services:
-- CF_DEMO
+- cf_trial_hana

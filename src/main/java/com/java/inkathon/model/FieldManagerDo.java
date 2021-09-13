@@ -5,31 +5,50 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
-import org.springframework.stereotype.Component;
 
 @Entity
 @Table(name="FieldManager")
 public class FieldManagerDo {
-	// 
 	@Id
-	@GeneratedValue(strategy= GenerationType.IDENTITY)
-	@Column(name="MANAGER_ID")
-	private Long manager_id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="MID")
+	private Long mid;
 	
+//	@Id
+//	@GeneratedValue(strategy= GenerationType.IDENTITY)
+//	@Column(name="Manager_ID")
+//	private Long manager_id;
+	
+
 	@Column(name="name")
 	private String name;
 	
 	@Column(name="phone_number")
 	private String phoneNumber;
+	
+	
+	@OneToOne(mappedBy="FieldManager")
+	 private IncidentDo Incident;
 
-	public Long getManager_id() {
-		return manager_id;
+	
+//	public Long getManager_id() {
+//		return manager_id;
+//	}
+
+//	public void setManager_id(Long manager_id) {
+//		this.manager_id = manager_id;
+//	}
+
+	public IncidentDo getIncident() {
+		return Incident;
 	}
 
-	public void setManager_id(Long manager_id) {
-		this.manager_id = manager_id;
+	public void setIncident(IncidentDo incident) {
+		Incident = incident;
+		
 	}
 
 	public String getName() {
@@ -53,11 +72,23 @@ public class FieldManagerDo {
 		// TODO Auto-generated constructor stub
 	}
 
+	public Long getMid() {
+		return mid;
+	}
+
+	public void setMid(Long mid) {
+		this.mid = mid;
+	}
+
 	@Override
 	public String toString() {
-		return "FieldManager [manager_id=" + manager_id + ", name=" + name + ", phoneNumber=" + phoneNumber + "]";
+		return "FieldManagerDo [mid=" + mid + ", name=" + name + ", phoneNumber=" + phoneNumber + ", Incident="
+				+ Incident + "]";
 	}
-	
+
+
+
+
 	
 	
 }

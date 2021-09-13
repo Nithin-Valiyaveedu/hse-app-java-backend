@@ -1,11 +1,15 @@
 package com.java.inkathon.model;
 import java.sql.Blob;
 import java.util.Date;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -17,9 +21,10 @@ public class IncidentDo{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="INCIDENT_ID")
     private int id;
-
-    @Column(name="MANAGER_ID")
-    private int managerID; 
+    
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "MANAGER_ID", referencedColumnName = "MID")
+    private FieldManagerDo FieldManager;
     
 	@Column(name="STATUS")
     private String status;
@@ -52,20 +57,7 @@ public class IncidentDo{
     
     @Column(name="SECTOR")
     private String sector;
-    
-    
-    public IncidentDo() {
-    	this.managerID=(int)(Math.random()*(1000-100+1)+100);
-	}
-    
-    public int getManagerID() {
-		return managerID;
-	}
-    
-	public void setManagerID(int managerID) {
-		 
-		this.managerID = managerID; 
-	}
+  
 
 	public int getId() {
 		return id;
@@ -155,15 +147,27 @@ public class IncidentDo{
 	public void setSector(String sector) {
 		this.sector = sector;
 	}	
+	
+	
+	public FieldManagerDo getFieldManager() {
+		return FieldManager;
+	}
+
+	public void setFieldManager(FieldManagerDo fieldManager) {
+		FieldManager = fieldManager;
+	}
 
 	@Override
 	public String toString() {
-		return "Incident [id=" + id + ", managerID=" + managerID + ", action=" + action + ", status=" + status
-				+ ", photo=" + photo + ", location=" + location + ", description=" + description + ", incidentType="
-				+ incidentType + ", incidentDate=" + incidentDate + ", riskLevel=" + riskLevel + "]";
+		return "IncidentDo [id=" + id + ", FieldManager=" + FieldManager + ", status=" + status + ", photo=" + photo
+				+ ", location=" + location + ", description=" + description + ", incidentType=" + incidentType
+				+ ", injury=" + injury + ", incidentDate=" + incidentDate + ", riskLevel=" + riskLevel + ", action="
+				+ action + ", sector=" + sector + "]";
 	}
+
+
+	
+
 	
            
 }
-    
-    

@@ -27,6 +27,18 @@ public class IncidentServiceImpl implements IncidentService {
 	public String updateRisk(IncidentDo incident){
 		return incidentDao.updateRisk(incident);
 	}
+	
+	public String updateStatus(IncidentDo incident){
+		return incidentDao.updateStatus(incident);
+	}
+	
+	public String rejectStatus(IncidentDo incident){
+		return incidentDao.rejectStatus(incident);
+	}
+	
+	public String deleteById(int id){
+		return incidentDao.deleteIncident(id);
+	}
 
 
 	

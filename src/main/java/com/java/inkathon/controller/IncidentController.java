@@ -6,7 +6,9 @@ import com.java.inkathon.service.IncidentService;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -22,26 +24,64 @@ public class IncidentController {
 	
 	ResponseDto rdto = new ResponseDto();
 	
+	//Post request
+	
 	@RequestMapping(value="/saveIncident", method= RequestMethod.POST)
 	@ResponseBody 
 	public String save(@RequestBody IncidentDo incident){
 		return incidentService.saveIncident(incident);
 	}
 	
+	//Getting all incident
+	
 	@GetMapping("/test2")
 	@ResponseBody
 	public ResponseDto methodTest() {
 
 		List<IncidentDo> rsE = incidentService.listIncidents();
-		System.out.println("data " + rsE);
+		System.err.println("data " + rsE);
 		rdto.setData(rsE);
 		return rdto;
 	}
 	
-	@RequestMapping(value="/updatedRisk", method= RequestMethod.POST)
+	@GetMapping("/test1")
+	@ResponseBody
+	public Object methodTest1() {
+
+		List<IncidentDo> rsE = incidentService.listIncidents();
+		return rsE;
+	}
+	
+	@RequestMapping(value="/updateRisk", method= RequestMethod.POST)
 	@ResponseBody
 	public String updaterisk(@RequestBody IncidentDo incident){
 		return incidentService.updateRisk(incident);
 	}
+	
+	//Approving an incident
+	
+	@RequestMapping(value="/approve", method= RequestMethod.POST)
+	@ResponseBody 
+	public String updatestatus(@RequestBody IncidentDo incident){
+		return incidentService.updateStatus(incident);
+	}
+	
+	//Rejecting a status 
+	
+	@RequestMapping(value="/reject", method= RequestMethod.POST)
+	@ResponseBody 
+	public String rejectstatus(@RequestBody IncidentDo incident){
+		return incidentService.rejectStatus(incident);
+	}
+	
+	
+	//Rejecting an incident
+	@DeleteMapping("/incident/{id}") 
+	public String deleteUser(@PathVariable int id) throws Exception{ 
+		return incidentService.deleteById(id);  
+	}
+	
+	
+	
 	
 }

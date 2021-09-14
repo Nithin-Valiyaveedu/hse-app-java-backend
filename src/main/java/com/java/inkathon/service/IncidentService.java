@@ -14,5 +14,10 @@ public interface IncidentService {
 	
 	public String updateRisk(IncidentDo incident);
 
+	public String updateStatus(IncidentDo incident);
+	
+	public String rejectStatus(IncidentDo incident);
+	
+	public String deleteById(int id);
 }
 

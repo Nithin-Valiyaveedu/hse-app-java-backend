@@ -157,6 +157,16 @@ public class IncidentDo{
 		FieldManager = fieldManager;
 	}
 
+	
+	
+	
+	public IncidentDo() {
+		super();
+		// TODO Auto-generated constructor stub
+		setStatus("Processing");
+		
+	}
+
 	@Override
 	public String toString() {
 		return "IncidentDo [id=" + id + ", FieldManager=" + FieldManager + ", status=" + status + ", photo=" + photo
@@ -164,6 +174,8 @@ public class IncidentDo{
 				+ ", injury=" + injury + ", incidentDate=" + incidentDate + ", riskLevel=" + riskLevel + ", action="
 				+ action + ", sector=" + sector + "]";
 	}
+	
+	
 
 
 	

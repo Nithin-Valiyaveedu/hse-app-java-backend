@@ -34,7 +34,7 @@ public class IncidentController {
 	
 	//Getting all incident
 	
-	@GetMapping("/test2")
+	@GetMapping("/test1")
 	@ResponseBody
 	public ResponseDto methodTest() {
 
@@ -44,7 +44,7 @@ public class IncidentController {
 		return rdto;
 	}
 	
-	@GetMapping("/test1")
+	@GetMapping("/test2")
 	@ResponseBody
 	public Object methodTest1() {
 
@@ -75,7 +75,7 @@ public class IncidentController {
 	}
 	
 	
-	//Rejecting an incident
+	//Deleting an incident
 	@DeleteMapping("/incident/{id}") 
 	public String deleteUser(@PathVariable int id) throws Exception{ 
 		return incidentService.deleteById(id);  

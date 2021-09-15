@@ -15,7 +15,7 @@ public class FieldManagerDo {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="MID")
-	private Long mid;
+	private int mid;
 	
 //	@Id
 //	@GeneratedValue(strategy= GenerationType.IDENTITY)
@@ -29,11 +29,6 @@ public class FieldManagerDo {
 	@Column(name="phone_number")
 	private String phoneNumber;
 	
-	
-	@OneToOne(mappedBy="FieldManager")
-	 private IncidentDo Incident;
-
-	
 //	public Long getManager_id() {
 //		return manager_id;
 //	}
@@ -42,14 +37,6 @@ public class FieldManagerDo {
 //		this.manager_id = manager_id;
 //	}
 
-	public IncidentDo getIncident() {
-		return Incident;
-	}
-
-	public void setIncident(IncidentDo incident) {
-		Incident = incident;
-		
-	}
 
 	public String getName() {
 		return name;
@@ -72,18 +59,18 @@ public class FieldManagerDo {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Long getMid() {
+	public int getMid() {
 		return mid;
 	}
 
-	public void setMid(Long mid) {
+	public void setMid(int mid) {
 		this.mid = mid;
 	}
 
 	@Override
 	public String toString() {
 		return "FieldManagerDo [mid=" + mid + ", name=" + name + ", phoneNumber=" + phoneNumber + ", Incident="
-				+ Incident + "]";
+				+  "]";
 	}
 
 

@@ -1,31 +1,31 @@
 package com.java.inkathon.model;
 import java.sql.Blob;
-import java.util.Date;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.java.inkathon.service.IncidentService;
 
 @Entity
 @Table(name="Incident")
 public class IncidentDo{
+	
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="INCIDENT_ID")
     private int id;
     
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "MANAGER_ID", referencedColumnName = "MID")
-    private FieldManagerDo FieldManager;
-    
+//    @ManyToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "MANAGER_ID", referencedColumnName = "MID")
+	@Column(name="MANAGER_ID")
+	private int ManagerID;
+  
 	@Column(name="STATUS")
     private String status;
     
@@ -46,7 +46,7 @@ public class IncidentDo{
     
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @Column(name="INCIDENT_DATE")
-    private Date incidentDate;
+    private java.sql.Date incidentDate;
     
     @Column(name="RISK_LEVEL")
     private int riskLevel;
@@ -58,7 +58,6 @@ public class IncidentDo{
     @Column(name="SECTOR")
     private String sector;
   
-
 	public int getId() {
 		return id;
 	}
@@ -115,11 +114,11 @@ public class IncidentDo{
 		this.incidentType = incidentType;
 	}
 
-	public Date getIncidentDate() {
+	public java.sql.Date getIncidentDate() {
 		return incidentDate;
 	}
 
-    public void setIncidentDate(Date incidentDate) {
+    public void setIncidentDate(java.sql.Date incidentDate) {
     	this.incidentDate = incidentDate;
 	
     }
@@ -149,12 +148,12 @@ public class IncidentDo{
 	}	
 	
 	
-	public FieldManagerDo getFieldManager() {
-		return FieldManager;
+	public int getManagerID() {
+			return ManagerID;
 	}
 
-	public void setFieldManager(FieldManagerDo fieldManager) {
-		FieldManager = fieldManager;
+	public void setManagerID(int managerID) {
+			ManagerID = managerID;
 	}
 
 	
@@ -163,17 +162,21 @@ public class IncidentDo{
 	public IncidentDo() {
 		super();
 		// TODO Auto-generated constructor stub
-		setStatus("Processing");
+//		setStatus("Processing");
+//		setManagerID(101);
+		
 		
 	}
 
 	@Override
 	public String toString() {
-		return "IncidentDo [id=" + id + ", FieldManager=" + FieldManager + ", status=" + status + ", photo=" + photo
+		return "IncidentDo [id=" + id + ", ManagerID=" + ManagerID + ", status=" + status + ", photo=" + photo
 				+ ", location=" + location + ", description=" + description + ", incidentType=" + incidentType
 				+ ", injury=" + injury + ", incidentDate=" + incidentDate + ", riskLevel=" + riskLevel + ", action="
 				+ action + ", sector=" + sector + "]";
 	}
+
+
 	
 	
 

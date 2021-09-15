@@ -1,6 +1,8 @@
 package com.java.inkathon.dao;
 import java.util.List;
 import javax.persistence.Query;
+
+import com.java.inkathon.model.FieldManagerDo;
 import com.java.inkathon.model.IncidentDo;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -17,7 +19,10 @@ public class IncidentDao {
 	private SessionFactory factory;
 	
 	public String saveIncident(IncidentDo incident){
+		
 		if(incident!=null){
+			incident.setStatus("Processing");
+			incident.setManagerID(500);
 			factory.getCurrentSession().save(incident);
 			return "Succesfully inserted into DB";
 		}

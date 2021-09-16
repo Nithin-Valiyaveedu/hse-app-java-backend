@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import com.java.inkathon.dao.IncidentDao;
 import com.java.inkathon.model.IncidentDo;
@@ -59,6 +58,10 @@ public class IncidentServiceImpl implements IncidentService {
 	@Override
 	public List<IncidentDo> getDoneIncidents() {
 		return incidentDao.getDoneincidents();
+	}
+	@Override
+	public List<IncidentDo> getApprovedIncidents() {
+		return incidentDao.getApprovedincidents();
 	}
 	
 	

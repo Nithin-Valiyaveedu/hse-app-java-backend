@@ -112,11 +112,22 @@ public class IncidentController {
 		return incidentService.updateaction(incident);
 	}
 	
+	
+	//Displaying incidents which are done
 	@GetMapping("/incidentDone")
 	@ResponseBody
 	public Object doneIncidents() {
 
 		List<IncidentDo> rsE = incidentService.getDoneIncidents();
+		return rsE;
+	}
+	
+
+	//Displaying incidents which which are approved
+	@GetMapping("/incidentApproved")
+	@ResponseBody
+	public Object approvedIncidents() {
+		List<IncidentDo> rsE = incidentService.getApprovedIncidents();
 		return rsE;
 	}
 	

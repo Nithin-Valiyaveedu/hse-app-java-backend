@@ -2,7 +2,6 @@ package com.java.inkathon.dao;
 import java.util.List;
 import javax.persistence.Query;
 
-import com.java.inkathon.model.FieldManagerDo;
 import com.java.inkathon.model.IncidentDo;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -18,6 +17,7 @@ public class IncidentDao {
 	@Autowired(required=true)
 	private SessionFactory factory;
 	
+	//creating an incident - user to manager dash board
 	public String saveIncident(IncidentDo incident){
 		
 		if(incident!=null){
@@ -30,6 +30,7 @@ public class IncidentDao {
 		return "object not found";
 	}
 	
+	//get incident in ascending order
 	@SuppressWarnings("unchecked")
 	public List<IncidentDo> getAllincidents() {
 		try{
@@ -43,12 +44,12 @@ public class IncidentDao {
 		return null;
 	}
 	
-	
+	//get incident whose risk level is greater than 2
 	@SuppressWarnings("unchecked")
 	public List<IncidentDo> sortrisklevel() {
 		try{
 		Session session = this.factory.getCurrentSession();
-		List<IncidentDo> incidentList = session.createQuery("from IncidentDo where riskLevel > 2").list();
+		List<IncidentDo> incidentList = session.createQuery("from IncidentDo where riskLevel > 2 order by id asc").list();
 		return incidentList;
 		}
 		catch(Exception e){
@@ -57,6 +58,7 @@ public class IncidentDao {
 		return null;
 	}
 	
+	//update risk - manager
 	public String updateRisk(IncidentDo incident){
 		if(incident!=null){
 			Session session = this.factory.getCurrentSession();
@@ -71,6 +73,8 @@ public class IncidentDao {
 		return "object not found";
 	}
 	
+	//approve incident - audit team
+	
 	public String updateStatus(IncidentDo incident){
 		if(incident!=null){
 			Session session = this.factory.getCurrentSession();
@@ -83,6 +87,8 @@ public class IncidentDao {
 		}
 		return "object not found";
 	}
+	
+	//reject incident -audit team
 	
 	public String rejectStatus(IncidentDo incident){
 		if(incident!=null){
@@ -97,6 +103,7 @@ public class IncidentDao {
 		return "object not found";
 	}
 	
+	//delete incident - unused at the momment
 	public String deleteIncident(int id){
 		Session session = this.factory.getCurrentSession();
 		Query query = session.createQuery("delete IncidentDo where INCIDENT_ID=:INCIDENT_ID");
@@ -106,6 +113,7 @@ public class IncidentDao {
 	    return "Succesfully deleted incident";
 	}
 	  
+	//save comment auditor to action team
 	public String saveComments(IncidentDo incident){
 		if(incident!=null){
 			Session session = this.factory.getCurrentSession();
@@ -119,9 +127,9 @@ public class IncidentDao {
 		}
 		return "object not found";
 
-}
+	}
 	
-
+	//update table - auditor
 	
 	public String updateAll(IncidentDo incident){
 		if(incident!=null){
@@ -146,7 +154,8 @@ public class IncidentDao {
 	
 	
 	//action team
-	//actionTeamStatus
+	//update actionTeamStatus
+	
 	
 	public String updateAction(IncidentDo incident){
 		if(incident!=null){
@@ -175,8 +184,20 @@ public class IncidentDao {
 		return null;
 	}
 	
+	//get audit team approved incidents
+		@SuppressWarnings("unchecked")
+		public List<IncidentDo> getApprovedincidents() {
+			try{
+			Session session = this.factory.getCurrentSession();
+			List<IncidentDo> incidentList = session.createQuery("from IncidentDo where status='Approved' order by id asc").list();
+			return incidentList;
+			}
+			catch(Exception e){
+			System.err.println("ERROR:---"+ e);
+			}
+			return null;
+		}
 	
-	
-	
+		
 	
 }

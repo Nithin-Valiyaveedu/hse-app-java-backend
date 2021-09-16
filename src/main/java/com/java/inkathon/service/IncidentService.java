@@ -3,7 +3,6 @@ package com.java.inkathon.service;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import com.java.inkathon.model.IncidentDo;
 @Service
@@ -30,6 +29,8 @@ public interface IncidentService {
 	public String updateaction(IncidentDo incident);
 	
 	public List<IncidentDo> getDoneIncidents();
+	
+	public List<IncidentDo> getApprovedIncidents();
 	
 }
 

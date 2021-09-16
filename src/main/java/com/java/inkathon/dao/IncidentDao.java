@@ -22,6 +22,7 @@ public class IncidentDao {
 		
 		if(incident!=null){
 			incident.setStatus("Processing");
+			incident.setActionTeamStatus("Processing");
 			incident.setManagerID(500);
 			factory.getCurrentSession().save(incident);
 			return "Succesfully inserted into DB";
@@ -33,7 +34,7 @@ public class IncidentDao {
 	public List<IncidentDo> getAllincidents() {
 		try{
 		Session session = this.factory.getCurrentSession();
-		List<IncidentDo> incidentList = session.createQuery("from IncidentDo").list();
+		List<IncidentDo> incidentList = session.createQuery("from IncidentDo order by id asc").list();
 		return incidentList;
 		}
 		catch(Exception e){
@@ -119,5 +120,63 @@ public class IncidentDao {
 		return "object not found";
 
 }
+	
+
+	
+	public String updateAll(IncidentDo incident){
+		if(incident!=null){
+			Session session = this.factory.getCurrentSession();
+			Query query = session.createQuery("update IncidentDo set LOCATION=:LOCATION, DESCRIPTION=:DESCRIPTION,INCIDENT_TYPE=:INCIDENT_TYPE,INCIDENT_DATE=:INCIDENT_DATE,SECTOR=:SECTOR,RISK_LEVEL=:RISK_LEVEL,EMPLOYEE_NAME=:EMPLOYEE_NAME,INJURY=:INJURY,ACTION_NEEDED=:ACTION_NEEDED where INCIDENT_ID=:INCIDENT_ID");
+	        query.setParameter("LOCATION",incident.getLocation());
+	        query.setParameter("DESCRIPTION",incident.getDescription());
+	        query.setParameter("INCIDENT_TYPE",incident.getIncidentType());
+	        query.setParameter("INCIDENT_DATE",incident.getIncidentDate());
+	        query.setParameter("SECTOR",incident.getSector());
+	        query.setParameter("RISK_LEVEL",incident.getRiskLevel());
+	        query.setParameter("EMPLOYEE_NAME",incident.getEmpname());
+	        query.setParameter("ACTION_NEEDED",incident.getAction());
+	        query.setParameter("INJURY",incident.getInjury());
+	        query.setParameter("INCIDENT_ID",incident.getId());
+	        int result = query.executeUpdate();
+	        System.err.println("No of rows updated: "+result);
+			return "Succesfully updated all the values";
+		}
+		return "object not found";
+	}
+	
+	
+	//action team
+	//actionTeamStatus
+	
+	public String updateAction(IncidentDo incident){
+		if(incident!=null){
+			Session session = this.factory.getCurrentSession();
+			Query query = session.createQuery("update IncidentDo set ACTION_TEAM_STATUS=:ACTION_TEAM_STATUS where INCIDENT_ID=:INCIDENT_ID");
+	        query.setParameter("ACTION_TEAM_STATUS",incident.getActionTeamStatus());
+	        query.setParameter("INCIDENT_ID",incident.getId());
+	        int result = query.executeUpdate();
+	        System.err.println("No of rows updated: "+result);
+			return "Succesfully completed incident";
+		}
+		return "object not found";
+	}
+	
+	//get action team completed incidents
+	@SuppressWarnings("unchecked")
+	public List<IncidentDo> getDoneincidents() {
+		try{
+		Session session = this.factory.getCurrentSession();
+		List<IncidentDo> incidentList = session.createQuery("from IncidentDo where actionTeamStatus='Completed'").list();
+		return incidentList;
+		}
+		catch(Exception e){
+		System.err.println("ERROR:---"+ e);
+		}
+		return null;
+	}
+	
+	
+	
+	
 	
 }

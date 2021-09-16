@@ -25,6 +25,11 @@ public interface IncidentService {
 	
 	public String saveComments(IncidentDo incident);
 	
-
+	public String updateall(IncidentDo incident);
+	
+	public String updateaction(IncidentDo incident);
+	
+	public List<IncidentDo> getDoneIncidents();
+	
 }
 

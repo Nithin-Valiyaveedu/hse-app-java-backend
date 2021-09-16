@@ -48,5 +48,19 @@ public class IncidentServiceImpl implements IncidentService {
 		return incidentDao.saveComments(incident);
 	}
 	
+
+	public String updateall(IncidentDo incident){
+		return incidentDao.updateAll(incident);
+	}
+	public String updateaction(IncidentDo incident){
+		return incidentDao.updateAction(incident);
+	}
+	
+	@Override
+	public List<IncidentDo> getDoneIncidents() {
+		return incidentDao.getDoneincidents();
+	}
+	
+	
 	
 }

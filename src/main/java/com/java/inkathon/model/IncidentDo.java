@@ -51,13 +51,22 @@ public class IncidentDo{
     @Column(name="RISK_LEVEL")
     private int riskLevel;
     
-    
     @Column(name="ACTION_NEEDED")
     private String action;
     
     @Column(name="SECTOR")
     private String sector;
-  
+    
+    @Column(name="EMPLOYEE_NAME")
+    private String empname;
+    
+    @Column(name="COMMENTS")
+    private String comments;
+    
+    @Column(name="ACTION_TEAM_STATUS")
+    private String actionTeamStatus;
+    
+ 
 	public int getId() {
 		return id;
 	}
@@ -155,10 +164,31 @@ public class IncidentDo{
 	public void setManagerID(int managerID) {
 			ManagerID = managerID;
 	}
+	
+	public String getEmpname() {
+		return empname;
+	}
 
-	
-	
-	
+	public void setEmpname(String empname) {
+		this.empname = empname;
+	}
+
+	public String getComments() {
+		return comments;
+	}
+
+	public void setComments(String comments) {
+		this.comments = comments;
+	}
+
+	public String getActionTeamStatus() {
+		return actionTeamStatus;
+	}
+
+	public void setActionTeamStatus(String actionTeamStatus) {
+		this.actionTeamStatus = actionTeamStatus;
+	}
+
 	public IncidentDo() {
 		super();
 		// TODO Auto-generated constructor stub

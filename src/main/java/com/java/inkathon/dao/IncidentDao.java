@@ -42,6 +42,20 @@ public class IncidentDao {
 		return null;
 	}
 	
+	
+	@SuppressWarnings("unchecked")
+	public List<IncidentDo> sortrisklevel() {
+		try{
+		Session session = this.factory.getCurrentSession();
+		List<IncidentDo> incidentList = session.createQuery("from IncidentDo where riskLevel > 2").list();
+		return incidentList;
+		}
+		catch(Exception e){
+		System.err.println("ERROR:---"+ e);
+		}
+		return null;
+	}
+	
 	public String updateRisk(IncidentDo incident){
 		if(incident!=null){
 			Session session = this.factory.getCurrentSession();
@@ -105,4 +119,5 @@ public class IncidentDao {
 		return "object not found";
 
 }
+	
 }

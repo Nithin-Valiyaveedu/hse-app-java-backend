@@ -87,5 +87,15 @@ public class IncidentController {
 		return incidentService.saveComments(incident);
 	}
 	
+
+	@GetMapping("/sortrisklevel")
+	@ResponseBody
+	public ResponseDto sortrisklevel() {
+
+		List<IncidentDo> rsE = incidentService.sortrisklevel();
+		System.err.println("data " + rsE);
+		rdto.setData(rsE);
+		return rdto;
+	}
 	
 }

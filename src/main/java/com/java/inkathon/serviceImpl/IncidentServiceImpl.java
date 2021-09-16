@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import com.java.inkathon.dao.IncidentDao;
 import com.java.inkathon.model.IncidentDo;
@@ -23,6 +24,9 @@ public class IncidentServiceImpl implements IncidentService {
 		return incidentDao.getAllincidents();
 	}
 	
+	public List<IncidentDo> sortrisklevel() {
+		return incidentDao.sortrisklevel();
+	}
 	
 	public String updateRisk(IncidentDo incident){
 		return incidentDao.updateRisk(incident);
@@ -43,5 +47,6 @@ public class IncidentServiceImpl implements IncidentService {
 	public String saveComments(IncidentDo incident){
 		return incidentDao.saveComments(incident);
 	}
+	
 	
 }

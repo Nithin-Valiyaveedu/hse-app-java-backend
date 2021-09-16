@@ -81,11 +81,35 @@ public class IncidentController {
 		return incidentService.deleteById(id);  
 	}
 	
+	//Setting comment from action team
 	@RequestMapping(value="/comments", method= RequestMethod.POST)
 	@ResponseBody 
 	public String saveComments(@RequestBody IncidentDo incident){
 		return incidentService.saveComments(incident);
 	}
+	
+	//Setting updates from audit team
+	@RequestMapping(value="/updateAll", method= RequestMethod.POST)
+	@ResponseBody
+	public String updateall(@RequestBody IncidentDo incident){
+		return incidentService.updateall(incident);
+	}
+	
+	//update action team status
+	@RequestMapping(value="/updateAction", method= RequestMethod.POST)
+	@ResponseBody
+	public String updateaction(@RequestBody IncidentDo incident){
+		return incidentService.updateaction(incident);
+	}
+	
+	@GetMapping("/incidentDone")
+	@ResponseBody
+	public Object doneIncidents() {
+
+		List<IncidentDo> rsE = incidentService.getDoneIncidents();
+		return rsE;
+	}
+	
 	
 	
 }

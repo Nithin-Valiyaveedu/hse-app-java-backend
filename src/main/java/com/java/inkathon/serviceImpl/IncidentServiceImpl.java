@@ -40,6 +40,8 @@ public class IncidentServiceImpl implements IncidentService {
 		return incidentDao.deleteIncident(id);
 	}
 
-
+	public String saveComments(IncidentDo incident){
+		return incidentDao.saveComments(incident);
+	}
 	
 }

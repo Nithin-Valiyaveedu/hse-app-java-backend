@@ -81,7 +81,11 @@ public class IncidentController {
 		return incidentService.deleteById(id);  
 	}
 	
-	
+	@RequestMapping(value="/comments", method= RequestMethod.POST)
+	@ResponseBody 
+	public String saveComments(@RequestBody IncidentDo incident){
+		return incidentService.saveComments(incident);
+	}
 	
 	
 }

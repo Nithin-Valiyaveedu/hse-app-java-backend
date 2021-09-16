@@ -91,5 +91,18 @@ public class IncidentDao {
 	    return "Succesfully deleted incident";
 	}
 	  
+	public String saveComments(IncidentDo incident){
+		if(incident!=null){
+			Session session = this.factory.getCurrentSession();
+			Query query = session.createQuery("update IncidentDo set COMMENTS=:COMMENTS where INCIDENT_ID=:INCIDENT_ID");
+	        query.setParameter("COMMENTS",incident.getComments());
+	        query.setParameter("INCIDENT_ID",incident.getId());
 
+	        int result = query.executeUpdate();
+	        System.err.println("No of rows updated: "+result);
+			return "Succesfully added Comments";
+		}
+		return "object not found";
+
+}
 }

@@ -19,5 +19,7 @@ public interface IncidentService {
 	public String rejectStatus(IncidentDo incident);
 	
 	public String deleteById(int id);
+	
+	public String saveComments(IncidentDo incident);
 }
 

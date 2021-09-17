@@ -21,8 +21,8 @@ public class IncidentDao {
 	public String saveIncident(IncidentDo incident){
 		
 		if(incident!=null){
-			incident.setStatus("Processing");
-			incident.setActionTeamStatus("Processing");
+			incident.setStatus("In Progress");
+			incident.setActionTeamStatus("No Action");
 			incident.setManagerID(500);
 			factory.getCurrentSession().save(incident);
 			return "Succesfully inserted into DB";
@@ -35,7 +35,7 @@ public class IncidentDao {
 	public List<IncidentDo> getAllincidents() {
 		try{
 		Session session = this.factory.getCurrentSession();
-		List<IncidentDo> incidentList = session.createQuery("from IncidentDo order by id asc").list();
+		List<IncidentDo> incidentList = session.createQuery("from IncidentDo order by INCIDENT_ID asc").list();
 		return incidentList;
 		}
 		catch(Exception e){
@@ -49,7 +49,7 @@ public class IncidentDao {
 	public List<IncidentDo> sortrisklevel() {
 		try{
 		Session session = this.factory.getCurrentSession();
-		List<IncidentDo> incidentList = session.createQuery("from IncidentDo where riskLevel > 2 order by id asc").list();
+		List<IncidentDo> incidentList = session.createQuery("from IncidentDo where riskLevel > 5 order by INCIDENT_ID asc").list();
 		return incidentList;
 		}
 		catch(Exception e){
@@ -93,8 +93,9 @@ public class IncidentDao {
 	public String rejectStatus(IncidentDo incident){
 		if(incident!=null){
 			Session session = this.factory.getCurrentSession();
-			Query query = session.createQuery("update IncidentDo set STATUS=:STATUS where INCIDENT_ID=:INCIDENT_ID");
+			Query query = session.createQuery("update IncidentDo set STATUS=:STATUS,ACTION_TEAM_STATUS=:ACTION_TEAM_STATUS where INCIDENT_ID=:INCIDENT_ID");
 	        query.setParameter("STATUS","Rejected");
+	        query.setParameter("ACTION_TEAM_STATUS","No Action");
 	        query.setParameter("INCIDENT_ID",incident.getId());
 	        int result = query.executeUpdate();
 	        System.err.println("No of rows updated: "+result);
@@ -103,7 +104,7 @@ public class IncidentDao {
 		return "object not found";
 	}
 	
-	//delete incident - unused at the momment
+	//delete incident - unused at the moment
 	public String deleteIncident(int id){
 		Session session = this.factory.getCurrentSession();
 		Query query = session.createQuery("delete IncidentDo where INCIDENT_ID=:INCIDENT_ID");
@@ -175,7 +176,7 @@ public class IncidentDao {
 	public List<IncidentDo> getDoneincidents() {
 		try{
 		Session session = this.factory.getCurrentSession();
-		List<IncidentDo> incidentList = session.createQuery("from IncidentDo where actionTeamStatus='Completed'").list();
+		List<IncidentDo> incidentList = session.createQuery("from IncidentDo where actionTeamStatus='Completed' order by INCIDENT_ID asc").list();
 		return incidentList;
 		}
 		catch(Exception e){
@@ -189,7 +190,7 @@ public class IncidentDao {
 		public List<IncidentDo> getApprovedincidents() {
 			try{
 			Session session = this.factory.getCurrentSession();
-			List<IncidentDo> incidentList = session.createQuery("from IncidentDo where status='Approved' order by id asc").list();
+			List<IncidentDo> incidentList = session.createQuery("from IncidentDo where status='Approved' order by INCIDENT_ID asc").list();
 			return incidentList;
 			}
 			catch(Exception e){

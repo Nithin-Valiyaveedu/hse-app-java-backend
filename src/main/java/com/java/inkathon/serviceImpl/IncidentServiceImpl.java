@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.java.inkathon.dao.IncidentDao;
 import com.java.inkathon.model.IncidentDo;
 import com.java.inkathon.service.IncidentService;
+
 @Service
 public class IncidentServiceImpl implements IncidentService {
 	
@@ -63,6 +64,12 @@ public class IncidentServiceImpl implements IncidentService {
 	public List<IncidentDo> getApprovedIncidents() {
 		return incidentDao.getApprovedincidents();
 	}
+
+	@Override
+	public List<IncidentDo> getNewIncidents() {
+		return incidentDao.getNewIncidents();
+	}
+
 	
 	
 	

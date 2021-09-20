@@ -58,6 +58,20 @@ public class IncidentDao {
 		return null;
 	}
 	
+	//sort incidents whose risk level is set
+	@SuppressWarnings("unchecked")
+	public List<IncidentDo> getNewIncidents(){
+		try{
+		Session session = this.factory.getCurrentSession();
+		List<IncidentDo> incidentList = session.createQuery("from IncidentDo where flag = 1 order by INCIDENT_ID asc").list();
+		return incidentList;
+		}
+		catch(Exception e){
+		System.err.println("ERROR:---"+ e);
+		}
+		return null;
+	}
+	
 	//update risk - manager
 	public String updateRisk(IncidentDo incident){
 		if(incident!=null){

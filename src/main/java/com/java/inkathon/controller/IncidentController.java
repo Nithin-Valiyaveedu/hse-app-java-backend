@@ -123,7 +123,7 @@ public class IncidentController {
 	}
 	
 
-	//Displaying incidents which which are approved
+	//Displaying incidents which are approved
 	@GetMapping("/incidentApproved")
 	@ResponseBody
 	public Object approvedIncidents() {
@@ -131,6 +131,14 @@ public class IncidentController {
 		return rsE;
 	}
 	
+	//
+	@GetMapping("/showIncident")
+	@ResponseBody
+	public Object showIncident() {
+
+		List<IncidentDo> rsE = incidentService.getNewIncidents();
+		return rsE;
+	}
 	
 	
 }

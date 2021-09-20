@@ -32,5 +32,7 @@ public interface IncidentService {
 	
 	public List<IncidentDo> getApprovedIncidents();
 	
+	public List<IncidentDo> getNewIncidents();
+	
 }
 

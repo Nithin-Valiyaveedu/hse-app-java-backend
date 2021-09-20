@@ -62,8 +62,9 @@ public class IncidentDao {
 	public String updateRisk(IncidentDo incident){
 		if(incident!=null){
 			Session session = this.factory.getCurrentSession();
-			Query query = session.createQuery("update IncidentDo set RISK_LEVEL=:RISK_LEVEL where INCIDENT_ID=:INCIDENT_ID");
+			Query query = session.createQuery("update IncidentDo set RISK_LEVEL=:RISK_LEVEL, FLAG=:FLAG where INCIDENT_ID=:INCIDENT_ID");
 	        query.setParameter("RISK_LEVEL",incident.getRiskLevel());
+			query.setParameter("FLAG",incident.getFlag());
 	        query.setParameter("INCIDENT_ID",incident.getId());
 	        int result = query.executeUpdate();
 	        // Commit the transaction and close the session

@@ -64,6 +64,8 @@ public class IncidentDo{
     @Column(name="ACTION_TEAM_STATUS")
     private String actionTeamStatus;
     
+    @Column(name="FLAG")
+    private int flag = 1;
  
 	public int getId() {
 		return id;
@@ -186,7 +188,15 @@ public class IncidentDo{
 	public void setActionTeamStatus(String actionTeamStatus) {
 		this.actionTeamStatus = actionTeamStatus;
 	}
+	public int getFlag() {
+		return flag;
+	}
 
+	public void setFlag(int flag) {
+
+			this.flag = flag;
+
+	}
 	public IncidentDo() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -201,16 +211,9 @@ public class IncidentDo{
 		return "IncidentDo [id=" + id + ", ManagerID=" + ManagerID + ", status=" + status + ", photo=" + photo
 				+ ", location=" + location + ", description=" + description + ", incidentType=" + incidentType
 				+ ", injury=" + injury + ", incidentDate=" + incidentDate + ", riskLevel=" + riskLevel + ", action="
-				+ action + ", sector=" + sector + "]";
+				+ action + ", sector=" + sector + ", empname=" + empname + ", comments=" + comments
+				+ ", actionTeamStatus=" + actionTeamStatus + ", flag=" + flag + "]";
 	}
-
-
-	
-	
-
-
-	
-
-	
+		
            
 }

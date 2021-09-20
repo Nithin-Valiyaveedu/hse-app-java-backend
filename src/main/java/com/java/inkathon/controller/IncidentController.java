@@ -88,7 +88,7 @@ public class IncidentController {
 		return incidentService.saveComments(incident);
 	}
 	
-
+	//Sorting based on the risklevel
 	@GetMapping("/sortrisklevel")
 	@ResponseBody
 	public ResponseDto sortrisklevel() {

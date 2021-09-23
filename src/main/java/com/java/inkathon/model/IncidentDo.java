@@ -65,8 +65,16 @@ public class IncidentDo{
     private String actionTeamStatus;
     
     @Column(name="FLAG")
-    private int flag = 1;
+    private int flag;
  
+	public Blob getPhoto() {
+		return photo;
+	}
+
+	public void setPhoto(Blob photo) {
+		this.photo = photo;
+	}
+
 	public int getId() {
 		return id;
 	}

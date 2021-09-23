@@ -2,6 +2,7 @@ package com.java.inkathon.serviceImpl;
 
 import java.util.List;
 
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -68,6 +69,10 @@ public class IncidentServiceImpl implements IncidentService {
 	@Override
 	public List<IncidentDo> getNewIncidents() {
 		return incidentDao.getNewIncidents();
+	}
+	@Override
+	public List<IncidentDo> getGraphData() {
+		return incidentDao.getGraphdata();
 	}
 
 	

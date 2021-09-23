@@ -5,6 +5,7 @@ import com.java.inkathon.service.IncidentService;
 
 import java.util.List;
 
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -40,6 +41,8 @@ public class IncidentController {
 
 		List<IncidentDo> rsE = incidentService.listIncidents();
 		System.err.println("data " + rsE);
+		rdto.setCode("200");
+		rdto.setMessage("OK");
 		rdto.setData(rsE);
 		return rdto;
 	}
@@ -131,7 +134,8 @@ public class IncidentController {
 		return rsE;
 	}
 	
-	//
+	// 0 - SET
+	// 1 - UNSET
 	@GetMapping("/showIncident")
 	@ResponseBody
 	public Object showIncident() {
@@ -139,6 +143,17 @@ public class IncidentController {
 		List<IncidentDo> rsE = incidentService.getNewIncidents();
 		return rsE;
 	}
+	
+	//for the graph 
+	@GetMapping("/graph")
+	@ResponseBody
+	public Object graphData(){
+
+		List<IncidentDo> rsE = incidentService.getGraphData();
+		return rsE;
+	}
+	
+	
 	
 	
 }

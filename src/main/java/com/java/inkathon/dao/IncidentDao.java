@@ -3,8 +3,12 @@ import java.util.List;
 import javax.persistence.Query;
 
 import com.java.inkathon.model.IncidentDo;
+import com.sun.istack.logging.Logger;
+
+import org.apache.commons.logging.Log;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,6 +28,7 @@ public class IncidentDao {
 			incident.setStatus("In Progress");
 			incident.setActionTeamStatus("No Action");
 			incident.setManagerID(500);
+			incident.setFlag(0);
 			factory.getCurrentSession().save(incident);
 			return "Succesfully inserted into DB";
 		}
@@ -63,7 +68,7 @@ public class IncidentDao {
 	public List<IncidentDo> getNewIncidents(){
 		try{
 		Session session = this.factory.getCurrentSession();
-		List<IncidentDo> incidentList = session.createQuery("from IncidentDo where flag = 1 order by INCIDENT_ID asc").list();
+		List<IncidentDo> incidentList = session.createQuery("from IncidentDo where flag = 0 OR riskLevel < 5 order by INCIDENT_ID asc").list();
 		return incidentList;
 		}
 		catch(Exception e){
@@ -76,7 +81,7 @@ public class IncidentDao {
 	public String updateRisk(IncidentDo incident){
 		if(incident!=null){
 			Session session = this.factory.getCurrentSession();
-			Query query = session.createQuery("update IncidentDo set RISK_LEVEL=:RISK_LEVEL, FLAG=:FLAG where INCIDENT_ID=:INCIDENT_ID");
+			Query query = session.createQuery("update IncidentDo set RISK_LEVEL=:RISK_LEVEL,FLAG=:FLAG where INCIDENT_ID=:INCIDENT_ID");
 	        query.setParameter("RISK_LEVEL",incident.getRiskLevel());
 			query.setParameter("FLAG",incident.getFlag());
 	        query.setParameter("INCIDENT_ID",incident.getId());
@@ -213,7 +218,22 @@ public class IncidentDao {
 			}
 			return null;
 		}
-	
+	//get graph data	
+		@SuppressWarnings("unchecked")
+		public List<IncidentDo> getGraphdata() {
+			try{
+			Session session = this.factory.getCurrentSession();
+			List<IncidentDo> incidentList = session.createQuery("SELECT incidentType, MAX(riskLevel) FROM IncidentDo GROUP BY incidentType").getResultList();
+			return incidentList;
+			}
+			
+			catch(Exception e){
+			System.err.println("ERROR:---"+ e);
+			}
+			return null;
+		}
+		
+		
 		
 	
 }

@@ -30,6 +30,11 @@
 			<artifactId>spring-core</artifactId>
 			<version>5.2.10.RELEASE</version>
 		</dependency>
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20180130</version>
+		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/org.springframework/spring-web -->
 		<dependency>

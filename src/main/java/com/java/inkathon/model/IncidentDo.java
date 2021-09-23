@@ -1,10 +1,10 @@
 package com.java.inkathon.model;
-import java.sql.Blob;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.Table;
 
 
@@ -19,17 +19,19 @@ public class IncidentDo{
     @Column(name="INCIDENT_ID")
     private int id;
     
-//    @ManyToOne(cascade = CascadeType.ALL)
-//    @JoinColumn(name = "MANAGER_ID", referencedColumnName = "MID")
+//  @ManyToOne(cascade = CascadeType.ALL)
+//  @JoinColumn(name = "MANAGER_ID", referencedColumnName = "MID")
 	@Column(name="MANAGER_ID")
 	private int ManagerID;
   
 	@Column(name="STATUS")
     private String status;
     
+	@Lob
     @Column(name="PHOTO")
-    private Blob photo;
-    
+	private String photo;
+	//private byte[] photo;
+  
     @Column(name="LOCATION")
     private String location;
     
@@ -66,14 +68,6 @@ public class IncidentDo{
     
     @Column(name="FLAG")
     private int flag;
- 
-	public Blob getPhoto() {
-		return photo;
-	}
-
-	public void setPhoto(Blob photo) {
-		this.photo = photo;
-	}
 
 	public int getId() {
 		return id;
@@ -98,14 +92,6 @@ public class IncidentDo{
 	public void setStatus(String status) {
 		this.status = status;
 	}
-
-//	public Blob getPhoto() {
-//		return photo;
-//	}
-
-//	public void setPhoto(Blob photo) {
-//		this.photo = photo;
-//	}
 
 	public String getLocation() {
 		return location;
@@ -205,6 +191,17 @@ public class IncidentDo{
 			this.flag = flag;
 
 	}
+	
+	
+
+	public String getPhoto() {
+		return photo;
+	}
+
+	public void setPhoto(String photo) {
+		this.photo = photo;
+	}
+
 	public IncidentDo() {
 		super();
 		// TODO Auto-generated constructor stub

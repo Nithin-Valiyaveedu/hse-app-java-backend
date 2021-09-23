@@ -2,7 +2,6 @@ package com.java.inkathon.serviceImpl;
 
 import java.util.List;
 
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +14,7 @@ public class IncidentServiceImpl implements IncidentService {
 	
 	@Autowired
 	IncidentDao incidentDao;
+
 	
 	public String saveIncident(IncidentDo incident) {
 		return incidentDao.saveIncident(incident);
@@ -74,6 +74,14 @@ public class IncidentServiceImpl implements IncidentService {
 	public List<IncidentDo> getGraphData() {
 		return incidentDao.getGraphdata();
 	}
+	
+//	public String savePhoto(MultipartFile multipartImage, int id) throws IOException{
+//		return incidentDao.savePhoto(multipartImage,id);
+//	}
+//	
+//	
+//	
+	
 
 	
 	

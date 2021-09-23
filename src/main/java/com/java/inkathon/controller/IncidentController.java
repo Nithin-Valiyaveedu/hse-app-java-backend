@@ -3,9 +3,11 @@ import com.java.inkathon.dto.ResponseDto;
 import com.java.inkathon.model.IncidentDo;
 import com.java.inkathon.service.IncidentService;
 
+
 import java.util.List;
 
-import org.json.JSONObject;
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,6 +24,7 @@ public class IncidentController {
 	
 	@Autowired
 	private IncidentService incidentService;
+	
 	
 	ResponseDto rdto = new ResponseDto();
 	
@@ -152,6 +155,17 @@ public class IncidentController {
 		List<IncidentDo> rsE = incidentService.getGraphData();
 		return rsE;
 	}
+	
+	
+//	//Adding photo
+//	@RequestMapping(value="/addPhoto", method= RequestMethod.POST)
+//	@ResponseBody
+//	public String savePhoto(@RequestParam("file") MultipartFile multipartImage, @RequestParam("id") int id) throws IOException{
+//		return incidentService.savePhoto(multipartImage,id);
+//	}
+//	
+	//Getting Photo
+	//--code
 	
 	
 	

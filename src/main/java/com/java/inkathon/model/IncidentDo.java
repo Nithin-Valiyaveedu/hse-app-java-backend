@@ -1,4 +1,5 @@
 package com.java.inkathon.model;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,67 +8,66 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.Table;
 
-
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
-@Table(name="Incident")
-public class IncidentDo{
-	
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="INCIDENT_ID")
-    private int id;
-    
-//  @ManyToOne(cascade = CascadeType.ALL)
-//  @JoinColumn(name = "MANAGER_ID", referencedColumnName = "MID")
-	@Column(name="MANAGER_ID")
-	private int ManagerID;
-  
-	@Column(name="STATUS")
-    private String status;
-    
-	@Lob
-    @Column(name="PHOTO")
-	private String photo;
-	//private byte[] photo;
-  
-    @Column(name="LOCATION")
-    private String location;
-    
-    @Column(name="DESCRIPTION")
-    private String description;
+@Table(name = "Incident")
+public class IncidentDo {
 
-	@Column(name="INCIDENT_TYPE")
-    private String incidentType;
-    
-    @Column(name="INJURY")
-    private String injury;
-    
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-    @Column(name="INCIDENT_DATE")
-    private java.sql.Date incidentDate;
-    
-    @Column(name="RISK_LEVEL")
-    private int riskLevel;
-    
-    @Column(name="ACTION_NEEDED")
-    private String action;
-    
-    @Column(name="SECTOR")
-    private String sector;
-    
-    @Column(name="EMPLOYEE_NAME")
-    private String empname;
-    
-    @Column(name="COMMENTS")
-    private String comments;
-    
-    @Column(name="ACTION_TEAM_STATUS")
-    private String actionTeamStatus;
-    
-    @Column(name="FLAG")
-    private int flag;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "INCIDENT_ID")
+	private int id;
+
+	// @ManyToOne(cascade = CascadeType.ALL)
+	// @JoinColumn(name = "MANAGER_ID", referencedColumnName = "MID")
+	@Column(name = "MANAGER_ID")
+	private int ManagerID;
+
+	@Column(name = "STATUS")
+	private String status;
+
+	@Lob
+	@Column(name = "PHOTO")
+	private String photo;
+	// private byte[] photo;
+
+	@Column(name = "LOCATION")
+	private String location;
+
+	@Column(name = "DESCRIPTION")
+	private String description;
+
+	@Column(name = "INCIDENT_TYPE")
+	private String incidentType;
+
+	@Column(name = "INJURY")
+	private String injury;
+
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+	@Column(name = "INCIDENT_DATE")
+	private java.sql.Date incidentDate;
+
+	@Column(name = "RISK_LEVEL")
+	private int riskLevel;
+
+	@Column(name = "ACTION_NEEDED")
+	private String action;
+
+	@Column(name = "SECTOR")
+	private String sector;
+
+	@Column(name = "EMPLOYEE_NAME")
+	private String empname;
+
+	@Column(name = "COMMENTS")
+	private String comments;
+
+	@Column(name = "ACTION_TEAM_STATUS")
+	private String actionTeamStatus;
+
+	@Column(name = "FLAG")
+	private int flag;
 
 	public int getId() {
 		return id;
@@ -121,10 +121,10 @@ public class IncidentDo{
 		return incidentDate;
 	}
 
-    public void setIncidentDate(java.sql.Date incidentDate) {
-    	this.incidentDate = incidentDate;
-	
-    }
+	public void setIncidentDate(java.sql.Date incidentDate) {
+		this.incidentDate = incidentDate;
+
+	}
 
 	public int getRiskLevel() {
 		return riskLevel;
@@ -133,8 +133,8 @@ public class IncidentDo{
 	public void setRiskLevel(int riskLevel) {
 		this.riskLevel = riskLevel;
 	}
-	
-	 public String getInjury() {
+
+	public String getInjury() {
 		return injury;
 	}
 
@@ -148,17 +148,16 @@ public class IncidentDo{
 
 	public void setSector(String sector) {
 		this.sector = sector;
-	}	
-	
-	
+	}
+
 	public int getManagerID() {
-			return ManagerID;
+		return ManagerID;
 	}
 
 	public void setManagerID(int managerID) {
-			ManagerID = managerID;
+		ManagerID = managerID;
 	}
-	
+
 	public String getEmpname() {
 		return empname;
 	}
@@ -182,17 +181,16 @@ public class IncidentDo{
 	public void setActionTeamStatus(String actionTeamStatus) {
 		this.actionTeamStatus = actionTeamStatus;
 	}
+
 	public int getFlag() {
 		return flag;
 	}
 
 	public void setFlag(int flag) {
 
-			this.flag = flag;
+		this.flag = flag;
 
 	}
-	
-	
 
 	public String getPhoto() {
 		return photo;
@@ -205,10 +203,9 @@ public class IncidentDo{
 	public IncidentDo() {
 		super();
 		// TODO Auto-generated constructor stub
-//		setStatus("Processing");
-//		setManagerID(101);
-		
-		
+		// setStatus("Processing");
+		// setManagerID(101);
+
 	}
 
 	@Override
@@ -219,6 +216,5 @@ public class IncidentDo{
 				+ action + ", sector=" + sector + ", empname=" + empname + ", comments=" + comments
 				+ ", actionTeamStatus=" + actionTeamStatus + ", flag=" + flag + "]";
 	}
-		
-           
+
 }

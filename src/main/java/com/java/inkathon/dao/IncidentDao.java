@@ -22,6 +22,7 @@ public class IncidentDao {
 		if (incident != null) {
 			incident.setStatus("In Progress");
 			incident.setActionTeamStatus("No Action");
+			incident.setComments("No Comments");
 			incident.setManagerID(500);
 			incident.setFlag(0);
 			factory.getCurrentSession().save(incident);

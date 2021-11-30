@@ -29,8 +29,11 @@ public class IncidentController {
 
 	@RequestMapping(value = "/saveIncident", method = RequestMethod.POST)
 	@ResponseBody
-	public String save(@RequestBody IncidentDo incident) {
-		return incidentService.saveIncident(incident);
+	public ResponseDto save(@RequestBody IncidentDo incident) {
+		incidentService.saveIncident(incident);
+		rdto.setCode("200");
+		rdto.setMessage("OK");
+		return rdto;
 	}
 
 	// Getting all incident
@@ -57,24 +60,34 @@ public class IncidentController {
 
 	@RequestMapping(value = "/updateRisk", method = RequestMethod.POST)
 	@ResponseBody
-	public String updaterisk(@RequestBody IncidentDo incident) {
-		return incidentService.updateRisk(incident);
+	public ResponseDto updaterisk(@RequestBody IncidentDo incident) {
+		incidentService.updateRisk(incident);
+		rdto.setCode("200");
+		rdto.setMessage("OK");
+		return rdto;
+		
 	}
 
 	// Approving an incident
 
 	@RequestMapping(value = "/approve", method = RequestMethod.POST)
 	@ResponseBody
-	public String updatestatus(@RequestBody IncidentDo incident) {
-		return incidentService.updateStatus(incident);
+	public ResponseDto updatestatus(@RequestBody IncidentDo incident) {
+		incidentService.updateStatus(incident);
+		rdto.setCode("200");
+		rdto.setMessage("OK");
+		return rdto;
 	}
 
 	// Rejecting a status
 
 	@RequestMapping(value = "/reject", method = RequestMethod.POST)
 	@ResponseBody
-	public String rejectstatus(@RequestBody IncidentDo incident) {
-		return incidentService.rejectStatus(incident);
+	public ResponseDto rejectstatus(@RequestBody IncidentDo incident) {
+		incidentService.rejectStatus(incident);
+		rdto.setCode("200");
+		rdto.setMessage("OK");
+		return rdto;
 	}
 
 	// Deleting an incident
@@ -86,8 +99,11 @@ public class IncidentController {
 	// Setting comment from action team
 	@RequestMapping(value = "/comments", method = RequestMethod.POST)
 	@ResponseBody
-	public String saveComments(@RequestBody IncidentDo incident) {
-		return incidentService.saveComments(incident);
+	public ResponseDto saveComments(@RequestBody IncidentDo incident) {
+		incidentService.saveComments(incident);
+		rdto.setCode("200");
+		rdto.setMessage("OK");
+		return rdto;
 	}
 
 	// Sorting based on the risklevel
@@ -104,15 +120,21 @@ public class IncidentController {
 	// Setting updates from audit team
 	@RequestMapping(value = "/updateAll", method = RequestMethod.POST)
 	@ResponseBody
-	public String updateall(@RequestBody IncidentDo incident) {
-		return incidentService.updateall(incident);
+	public ResponseDto updateall(@RequestBody IncidentDo incident) {
+		incidentService.updateall(incident);
+		rdto.setCode("200");
+		rdto.setMessage("OK");
+		return rdto;
 	}
 
 	// update action team status
 	@RequestMapping(value = "/updateAction", method = RequestMethod.POST)
 	@ResponseBody
-	public String updateaction(@RequestBody IncidentDo incident) {
-		return incidentService.updateaction(incident);
+	public ResponseDto updateaction(@RequestBody IncidentDo incident) {
+		incidentService.updateaction(incident);
+		rdto.setCode("200");
+		rdto.setMessage("OK");
+		return rdto;
 	}
 
 	// Displaying incidents which are done
